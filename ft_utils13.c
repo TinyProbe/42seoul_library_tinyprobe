@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_i64 ft_factorial(t_i64 n)
+t_i64 ft_fact(t_i64 n)
 {
   if (!n)
     return (1);
@@ -8,7 +8,7 @@ t_i64 ft_factorial(t_i64 n)
     return (n * ft_factorial(n - 1));
 }
 
-t_i64 ft_power(t_i64 n, t_i32 indices)
+t_i64 ft_pow(t_i64 n, t_i32 indices)
 {
   if (!indices)
     return (1);
@@ -16,7 +16,7 @@ t_i64 ft_power(t_i64 n, t_i32 indices)
     return (n * ft_power(n, indices - 1));
 }
 
-t_i64 ft_fibonacci(t_i32 idx)
+t_i64 ft_fibo(t_i32 idx)
 {
   if (idx == 0)
     return (0);
