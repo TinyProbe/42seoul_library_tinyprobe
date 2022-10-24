@@ -1,59 +1,37 @@
 #include "libft.h"
 
-int	ft_tolower(int c)
+void	ft_swap(t_i8 *a, t_i8 *b)
 {
-	if (c == -1 || c >= 256)
-		return (c);
-	if (c >= 'A' && c <= 'Z')
-		return (c + ('a' - 'A'));
-	return (c);
+  const t_i8  a_ = *a;
+  const t_i8  b_ = *b;
+
+  *a = b_;
+  *b = a_;
 }
 
-int	ft_toupper(int c)
+void	ft_swap(t_i16 *a, t_i16 *b)
 {
-	if (c == -1 || c >= 256)
-		return (c);
-	if (c >= 'a' && c <= 'z')
-		return (c - ('a' - 'A'));
-	return (c);
+  const t_i16 a_ = *a;
+  const t_i16 b_ = *b;
+
+  *a = b_;
+  *b = a_;
 }
 
-int ft_stoi(const char *str)
+void	ft_swap(t_i32 *a, t_i32 *b)
 {
-  int       sign;
-	long long res;
+  const t_i32 a_ = *a;
+  const t_i32 b_ = *b;
 
-  sign = 1;
-	res = 0;
-  if (*str == '-' && ++str)
-    sign = -1;
-	while (*str)
-		res = (res * 10) + (*str++ - '0');
-	return (res * sign);
+  *a = b_;
+  *b = a_;
 }
 
-char	*ft_itoa(int n)
+void	ft_swap(t_i64 *a, t_i64 *b)
 {
-	char	buf[20];
-	char	*dst;
-	int		i;
-	size_t	len;
+  const t_i64 a_ = *a;
+  const t_i64 b_ = *b;
 
-	if (!n)
-		return ((char *) ft_memcpy(malloc(2), "0\0", 2));
-	i = 0;
-	if (n < 0)
-		buf[i++] = '-';
-	while (n)
-	{
-		buf[i++] = ft_abs(n % 10) + '0';
-		n /= 10;
-	}
-	buf[i] = '\0';
-	ft_rev(buf, buf[0] == '-', i);
-	len = ft_strlen(buf);
-	dst = (char *) malloc(len + 1);
-	if (!dst)
-		return (dst);
-	return ((char *) ft_memcpy(dst, buf, len + 1));
+  *a = b_;
+  *b = a_;
 }

@@ -1,70 +1,61 @@
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_strlcpy(t_i8 *dst, const t_i8 *src, size_t size)
 {
-	return ((char *) ft_memchr(s, c, ft_strlen(s) + 1));
+	size_t	len;
+	size_t	n;
+
+	len = ft_strlen(src);
+	if (!size)
+		return (len);
+	n = len;
+	if (n > size - 1)
+		n = size - 1;
+	ft_memcpy(dst, src, n);
+	dst[n] = '\0';
+	return (len);
 }
 
-char	*ft_strdup(const char *s1)
+size_t	ft_strlcat(t_i8 *dst, const t_i8 *src, size_t size)
 {
-	size_t	size;
-	void	*res;
+	t_u64   p[2];
+	size_t  len[2];
+	size_t  n;
 
-	size = ft_strlen(s1) + 1;
-	res = malloc(size);
-	if (res)
-		return ((char *) ft_memcpy(res, s1, size));
-	return (res);
+	len[0] = ft_strlen(dst);
+	len[1] = ft_strlen(src);
+	p[0] = (t_u64) dst + len[0];
+	p[1] = (t_u64) src;
+	if (len[0] >= size)
+		return (len[1] + size);
+	n = size - (len[0] + 1);
+	if (n > len[1])
+		n = len[1];
+	while (n--)
+		*(t_u8 *) p[0]++ = *(t_u8 *) p[1]++;
+	*(t_u8 *) p[0] = '\0';
+	return (len[0] + len[1]);
 }
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_striteri(t_i8 *s, void (*f)(t_u32, t_i8 *))
 {
-	int	i;
+	t_i32 i;
 
 	i = -1;
 	while (s[++i])
-		f((unsigned int)i, s + i);
+		f((t_u32) i, s + i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+t_i8	*ft_strmapi(t_i8 const *s, t_i8 (*f)(t_u32, t_i8))
 {
-	size_t	len_s1;
-	size_t	len_s2;
-	char	*dst;
+	t_i8		*dst;
+	size_t		n;
 
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	dst = (char *) malloc(len_s1 + len_s2 + 1);
+	n = ft_strlen(s);
+	dst = (t_i8 *) malloc(n + 1);
 	if (!dst)
 		return (dst);
-	ft_memcpy(dst, s1, len_s1 + 1);
-	ft_memcpy(dst + len_s1, s2, len_s2 + 1);
+	while (n--)
+		dst[n] = f(n, s[n]);
 	return (dst);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	long long	p;
-
-	p = (long long) s;
-	while (1)
-	{
-		if (!((BYTE *) p)[0])
-			return (p - (long long) s);
-		if (!((BYTE *) p)[1])
-			return (p + 1 - (long long) s);
-		if (!((BYTE *) p)[2])
-			return (p + 2 - (long long) s);
-		if (!((BYTE *) p)[3])
-			return (p + 3 - (long long) s);
-		if (!((BYTE *) p)[4])
-			return (p + 4 - (long long) s);
-		if (!((BYTE *) p)[5])
-			return (p + 5 - (long long) s);
-		if (!((BYTE *) p)[6])
-			return (p + 6 - (long long) s);
-		if (!((BYTE *) p)[7])
-			return (p + 7 - (long long) s);
-		p += 8;
-	}
 }

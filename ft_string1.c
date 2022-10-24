@@ -1,77 +1,64 @@
 #include "libft.h"
 
-#define BYTE	unsigned char
-#define UNT_T	unsigned long long
-#define UNTSIZE	8
-
-static void	cat(long long *pp1, long long *pp2, size_t *pn);
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlen(const t_i8 *s)
 {
-	long long	p[2];
-	size_t		len[2];
-	size_t		n;
+  size_t  len;
 
-	len[0] = ft_strlen(dst);
-	len[1] = ft_strlen(src);
-	p[0] = (long long) dst + len[0];
-	p[1] = (long long) src;
-	if (len[0] >= size)
-		return (len[1] + size);
-	n = size - (len[0] + 1);
-	if (n > len[1])
-		n = len[1];
-	if (n >= UNTSIZE)
-		cat(p, p + 1, &n);
-	while (n--)
-		*(BYTE *) p[0]++ = *(BYTE *) p[1]++;
-	*(BYTE *) p[0] = '\0';
-	return (len[0] + len[1]);
-}
-static void	cat(long long *pp1, long long *pp2, size_t *pn)
-{
-	while (*pn >= UNTSIZE)
-	{
-		*(UNT_T *) *pp1 = *(UNT_T *) *pp2;
-		*pp1 += UNTSIZE;
-		*pp2 += UNTSIZE;
-		*pn -= UNTSIZE;
-	}
+  len = 0;
+	while (1)
+    if (s[len++] == '\0')
+      return (len);
 }
 
-static void	check(long long *pp, size_t *pn, int c);
-char	*ft_strrchr(const char *s, int c)
+t_i8	*ft_strchr(const t_i8 *s, t_i32 c)
 {
-	long long	p;
-	size_t		n;
+	return ((t_i8 *) ft_memchr(s, c, ft_strlen(s) + 1));
+}
+
+t_i8	*ft_strrchr(const t_i8 *s, t_i32 c)
+{
+	t_u64   p;
+	size_t  n;
 
 	n = ft_strlen(s) + 1;
-	p = (long long) s + n;
-  check(&p, &n, c);
+	p = (t_u64) s + n;
 	while (n--)
-		if (*(BYTE *)--p == (BYTE) c)
+		if (*(t_u8 *) --p == (t_u8) c)
 			return ((void *) p);
 	return ((void *) 0);
 }
-static void	check(long long *pp, size_t *pn, int c)
-{
-	UNT_T	rpt_one;
-	UNT_T	rpt_c;
-	UNT_T	unit;
 
-	rpt_one = 0x0101010101010101;
-	rpt_c = c | (c << 8);
-	rpt_c |= rpt_c << 16;
-	rpt_c |= rpt_c << 32;
-	while (*pn >= UNTSIZE)
+t_i8	*ft_strnstr(const t_i8 *big, const t_i8 *little, size_t len)
+{
+	size_t	length[2];
+	t_i32		i[2];
+
+	length[0] = ft_strlen(big);
+	length[1] = ft_strlen(little);
+	if (length[0] > len)
+		length[0] = len;
+	i[0] = -1;
+	while ((size_t)++i[0] + length[1] <= length[0])
 	{
-		*pp -= UNTSIZE;
-		*pn -= UNTSIZE;
-		unit = *(UNT_T *) *pp ^ rpt_c;
-		if (((unit - rpt_one) & ~unit) & (rpt_one << 7))
-		{
-			*pp += UNTSIZE;
-			*pn += UNTSIZE;
-			break ;
-		}
+		i[1] = -1;
+		while ((size_t)++i[1] < length[1])
+			if (big[i[0] + i[1]] != little[i[1]])
+				break ;
+		if ((size_t) i[1] == length[1])
+			return ((t_i8 *) big + i[0]);
 	}
+	return ((t_i8 *) 0);
+}
+
+t_i32	ft_strncmp(const t_i8 *s1, const t_i8 *s2, size_t n)
+{
+	size_t	tmp;
+
+	tmp = ft_strlen(s1) + 1;
+	if (n > tmp)
+		n = tmp;
+	tmp = ft_strlen(s2) + 1;
+	if (n > tmp)
+		n = tmp;
+	return (ft_memcmp(s1, s2, n));
 }

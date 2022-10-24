@@ -1,38 +1,29 @@
 #include "libft.h"
 
-int	ft_abs(int n)
+t_i8	ft_abs(t_i8 n)
 {
 	if (n < 0)
 		return (-n);
 	return (n);
 }
 
-void  ft_rev(char *str, int begin, int end)
+t_i16	ft_abs(t_i16 n)
 {
-	while (begin < --end)
-		ft_swap(str + begin++, str + end);
+	if (n < 0)
+		return (-n);
+	return (n);
 }
 
-void  ft_rev(int *arr, int begin, int end)
+t_i32	ft_abs(t_i32 n)
 {
-	while (begin < --end)
-		ft_swap(arr + begin++, arr + end);
+	if (n < 0)
+		return (-n);
+	return (n);
 }
 
-void	ft_swap(char *a, char *b)
+t_i64	ft_abs(t_i64 n)
 {
-  const char  a_ = *a;
-  const char  b_ = *b;
-
-  *a = b_;
-  *b = a_;
-}
-
-void	ft_swap(int *a, int *b)
-{
-  const int a_ = *a;
-  const int b_ = *b;
-
-  *a = b_;
-  *b = a_;
+	if (n < 0)
+		return (-n);
+	return (n);
 }

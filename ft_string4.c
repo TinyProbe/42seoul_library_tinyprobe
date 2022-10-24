@@ -1,38 +1,67 @@
 #include "libft.h"
 
-#define BYTE		unsigned char
-#define CODE_SIZE	256
+static t_i8		*trim(const t_i8 *s, t_i8 c);
+static size_t	split(const t_i8 *trimmed, t_i8 **buf, t_i8 c);
 
-static void		make_code(BYTE *code, const char *set);
-static char		*trimmed_str(const char *s, BYTE *code);
-
-char	*ft_strtrim(char const *s1, char const *set)
+t_i8	**ft_split(t_i8 const *s, t_i8 c)
 {
-	BYTE	code[CODE_SIZE];
+	t_i8	*trimmed;
+	t_i8	*buf[100000];
+	t_i8	**strs;
+	size_t	num;
 
-	make_code(code, set - 1);
-	return (trimmed_str(s1, code));
+	trimmed = trim(s, c);
+	if (!trimmed)
+		return ((t_i8 **) 0);
+	num = split(trimmed, buf, c);
+	strs = (t_i8 **) malloc(sizeof(t_i8 *) * (num + 1));
+	ft_memcpy(strs, buf, sizeof(t_i8 *) * (num + 1));
+	free(trimmed);
+	return (strs);
 }
 
-static void	make_code(BYTE *code, const char *set)
+static t_i8	*trim(const t_i8 *s, t_i8 c)
 {
-	ft_bzero((void *) code, CODE_SIZE);
-	while (*++set)
-		code[(int) *set] = 1;
+	t_i8	*dst;
+	t_i8	set[2];
+	t_i32		i[2];
+
+	*(t_u16 *) set = (t_u16) c;
+	dst = ft_strtrim(s, set);
+	if (!dst)
+		return (dst);
+	*(t_i64 *) i = (t_i64) 0;
+	while (dst[i[0]])
+	{
+		if (dst[i[0]] == c && dst[i[0] - 1] == c)
+			while (dst[i[0]] == c)
+				i[0] += 1;
+		if (i[0] ^ i[1])
+			dst[i[1]] = dst[i[0]];
+		i[0] += 1;
+		i[1] += 1;
+	}
+	dst[i[1]] = '\0';
+	return (dst);
 }
 
-static char	*trimmed_str(const char *s, BYTE *code)
+static size_t	split(const t_i8 *trimmed, t_i8 **buf, t_i8 c)
 {
-	int	beg;
-	int	end;
+	t_u64	p1;
+	t_u64	p2;
+	size_t		num;
 
-	beg = -1;
-	while (s[++beg])
-		if (!code[(int) s[beg]])
-			break ;
-	end = ft_strlen(s);
-	while (end--)
-		if (!code[(int) s[end]])
-			break ;
-	return (ft_substr(s, beg, (end + 1) - beg));
+	p1 = (t_u64) trimmed;
+	p2 = (t_u64) ft_memchr((t_i8 *) p1, c, ft_strlen((t_i8 *) p1));
+	num = 0;
+	while (p2)
+	{
+		buf[num++] = ft_substr((t_i8 *) p1, 0, p2 - p1);
+		p1 = p2 + 1;
+		p2 = (t_u64) ft_memchr((t_i8 *) p1, c, ft_strlen((t_i8 *) p1));
+	}
+	if (*(t_i8 *) p1)
+		buf[num++] = ft_strdup((t_i8 *) p1);
+	buf[num] = (t_i8 *) 0;
+	return (num);
 }

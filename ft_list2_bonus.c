@@ -12,9 +12,9 @@ t_list	*ft_lstnew(void *content)
 	return (elem);
 }
 
-int	ft_lstsize(t_list *lst)
+t_i32	ft_lstsize(t_list *lst)
 {
-	int	len;
+	t_i32	len;
 
 	len = 0;
 	while (lst)

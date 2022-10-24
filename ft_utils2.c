@@ -1,29 +1,25 @@
 #include "libft.h"
 
-I32 ft_max(I32 a, I32 b)
+void  ft_rev(t_i8 *str, t_i32 begin, t_i32 end)
 {
-  if (a > b)
-    return (a);
-  return (b);
+	while (begin < --end)
+		ft_swap(str + begin++, str + end);
 }
 
-I64 ft_max(I64 a, I64 b)
+void  ft_rev(t_i16 *str, t_i32 begin, t_i32 end)
 {
-  if (a > b)
-    return (a);
-  return (b);
+	while (begin < --end)
+		ft_swap(str + begin++, str + end);
 }
 
-U32 ft_max(U32 a, U32 b)
+void  ft_rev(t_i32 *str, t_i32 begin, t_i32 end)
 {
-  if (a > b)
-    return (a);
-  return (b);
+	while (begin < --end)
+		ft_swap(str + begin++, str + end);
 }
 
-U64 ft_max(U64 a, U64 b)
+void  ft_rev(t_i64 *str, t_i32 begin, t_i32 end)
 {
-  if (a > b)
-    return (a);
-  return (b);
+	while (begin < --end)
+		ft_swap(str + begin++, str + end);
 }

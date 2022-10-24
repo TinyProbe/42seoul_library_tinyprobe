@@ -1,61 +1,37 @@
 #include "libft.h"
 
-#define DIGIT   1
-#define WSPACE  (1 << 1)
-
-static int		iswhat(int c);
-static int		getsign(const char **pstr);
-static size_t	dglen(const char *s);
-
-int	ft_atoi(const char *str)
+void	ft_swap(t_u8 *a, t_u8 *b)
 {
-	int			sign;
-	size_t		dlen;
-	const char	*max;
+  const t_u8  a_ = *a;
+  const t_u8  b_ = *b;
 
-	while (*str && (iswhat(*str) & WSPACE))
-		++str;
-	sign = getsign(&str);
-	dlen = dglen(str);
-	max = "9223372036854775808";
-	if (sign == 1)
-		max = "9223372036854775807";
-	if (dlen > 19 || (dlen == 19 && ft_strncmp(str, max, dlen) > 0))
-		return (~(sign >> 1));
-	return (ft_stoi(str, dlen) * sign);
+  *a = b_;
+  *b = a_;
 }
 
-static int	iswhat(int c)
+void	ft_swap(t_u16 *a, t_u16 *b)
 {
-	unsigned char	ch;
+  const t_u16 a_ = *a;
+  const t_u16 b_ = *b;
 
-	ch = c;
-	c = 0;
-	if (ft_isdigit(ch))
-		c += DIGIT;
-	if ((ch >= 9 && ch <= 13) || ch == 32)
-		c += WSPACE;
-	return (c);
+  *a = b_;
+  *b = a_;
 }
 
-static int	getsign(const char **pstr)
+void	ft_swap(t_u32 *a, t_u32 *b)
 {
-	if (**pstr == '-')
-	{
-		++(*pstr);
-		return (-1);
-	}
-	else if (**pstr == '+')
-		++(*pstr);
-	return (1);
+  const t_u32 a_ = *a;
+  const t_u32 b_ = *b;
+
+  *a = b_;
+  *b = a_;
 }
 
-static size_t	dglen(const char *s)
+void	ft_swap(t_u64 *a, t_u64 *b)
 {
-	size_t	len;
+  const t_u64 a_ = *a;
+  const t_u64 b_ = *b;
 
-	len = 0;
-	while (s[len] && (iswhat(s[len]) & DIGIT))
-		++len;
-	return (len);
+  *a = b_;
+  *b = a_;
 }
