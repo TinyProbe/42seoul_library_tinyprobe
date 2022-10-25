@@ -42,9 +42,9 @@ static void unit_merge_sort(t_i32 **buf, t_i32 seq, size_t len)
 
 static t_i32  replace_buf(t_i32 **buf, t_i32 seq, size_t len, t_i32 *i)
 {
-  if (i[0] < ft_min_i32(i[2] + (1 << seq), (t_i32) len))
+  if (i[0] < ft_min(i[2] + (1 << seq), (t_i32) len))
   {
-    if (i[1] < ft_min_i32(i[2] + (1 << seq) * 2, (t_i32) len))
+    if (i[1] < ft_min(i[2] + (1 << seq) * 2, (t_i32) len))
     {
       if (buf[seq & 1][i[0]] < buf[seq & 1][i[1]])
         buf[!(seq & 1)][i[3]++] = buf[seq & 1][i[0]++];
@@ -54,7 +54,7 @@ static t_i32  replace_buf(t_i32 **buf, t_i32 seq, size_t len, t_i32 *i)
     else
       buf[!(seq & 1)][i[3]++] = buf[seq & 1][i[0]++];
   }
-  else if (i[1] < ft_min_i32(i[2] + (1 << seq) * 2, (t_i32) len))
+  else if (i[1] < ft_min(i[2] + (1 << seq) * 2, (t_i32) len))
     buf[!(seq & 1)][i[3]++] = buf[seq & 1][i[1]++];
   else
     return (-1);

@@ -12,7 +12,7 @@ void	itodec(t_elem *info, t_i32 i)
 	}
 	while (i)
 	{
-		info->res[info->end++] = ft_abs_i32(i % 10) + '0';
+		info->res[info->end++] = ft_abs(i % 10) + '0';
 		i /= 10;
 	}
 	ft_rev_i8(info->res, info->begin, info->end);
