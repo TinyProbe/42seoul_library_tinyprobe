@@ -25,8 +25,9 @@ t_i32 ft_stoi(const t_i8 *str)
 
   sign = 1;
 	res = 0;
-  if (*str == '-' && ++str)
-    sign = -1;
+  if (*str == '-' || *str == '+')
+    if (*str++ == '-')
+      sign = -1;
 	while (ft_isdigit(*str))
 		res = (res * 10) + (*str++ - '0');
 	return (res * sign);
