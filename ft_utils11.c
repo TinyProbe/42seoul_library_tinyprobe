@@ -22,7 +22,7 @@ t_i32	ft_atoi(const t_i8 *str)
 		max = "9223372036854775807";
 	if (dlen > 19 || (dlen == 19 && ft_strncmp(str, max, dlen) > 0))
 		return (~(sign >> 1));
-	return (ft_stoi(str, dlen) * sign);
+	return (ft_stoi(str) * sign);
 }
 
 static t_i32	iswhat(t_i32 c)

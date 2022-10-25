@@ -27,7 +27,7 @@ t_i32 ft_stoi(const t_i8 *str)
 	res = 0;
   if (*str == '-' && ++str)
     sign = -1;
-	while (*str)
+	while (ft_isdigit(*str))
 		res = (res * 10) + (*str++ - '0');
 	return (res * sign);
 }
@@ -45,11 +45,11 @@ t_i8	*ft_itoa(t_i32 n)
 		buf[i++] = '-';
 	while (n)
 	{
-		buf[i++] = ft_abs(n % 10) + '0';
+		buf[i++] = ft_abs_i32(n % 10) + '0';
 		n /= 10;
 	}
 	buf[i] = '\0';
-	ft_rev(buf, (t_i32) (buf[0] == '-'), i);
+	ft_rev_i8(buf, (t_i32) (buf[0] == '-'), i);
 	dst = (t_i8 *) malloc(i + 1);
 	if (!dst)
 		return (dst);

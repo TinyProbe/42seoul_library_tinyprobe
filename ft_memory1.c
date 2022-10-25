@@ -7,9 +7,9 @@ void	*ft_memchr(const void *s, t_i32 c, size_t n)
 
 	str = (t_u8 *) s;
   i = -1;
-	while (++i < n)
-		if (p[i] == c)
-			return ((void *) p);
+	while (++i < (t_i32) n)
+		if (str[i] == c)
+			return ((void *) str);
 	return ((void *) 0);
 }
 

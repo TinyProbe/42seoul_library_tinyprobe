@@ -14,6 +14,16 @@ t_i8	*ft_strdup(const t_i8 *s1)
 	return (res);
 }
 
+t_i8	*ft_strndup(const t_i8 *s1, size_t n)
+{
+	void	*res;
+
+	res = malloc(n + 1);
+	if (res)
+		((char *) ft_memcpy(res, s1, n))[n] = '\0';
+	return (res);
+}
+
 t_i8	*ft_strjoin(t_i8 const *s1, t_i8 const *s2)
 {
 	size_t	len1;

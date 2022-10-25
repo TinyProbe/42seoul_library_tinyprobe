@@ -5,9 +5,9 @@ size_t	ft_strlen(const t_i8 *s)
   size_t  len;
 
   len = 0;
-	while (1)
-    if (s[len++] == '\0')
-      return (len);
+	while (s[len])
+    ++len;
+  return (len);
 }
 
 t_i8	*ft_strchr(const t_i8 *s, t_i32 c)
@@ -38,10 +38,10 @@ t_i8	*ft_strnstr(const t_i8 *big, const t_i8 *little, size_t len)
 	if (length[0] > len)
 		length[0] = len;
 	i[0] = -1;
-	while ((size_t)++i[0] + length[1] <= length[0])
+	while ((size_t) ++i[0] + length[1] <= length[0])
 	{
 		i[1] = -1;
-		while ((size_t)++i[1] < length[1])
+		while ((size_t) ++i[1] < length[1])
 			if (big[i[0] + i[1]] != little[i[1]])
 				break ;
 		if ((size_t) i[1] == length[1])
@@ -52,13 +52,7 @@ t_i8	*ft_strnstr(const t_i8 *big, const t_i8 *little, size_t len)
 
 t_i32	ft_strncmp(const t_i8 *s1, const t_i8 *s2, size_t n)
 {
-	size_t	tmp;
-
-	tmp = ft_strlen(s1) + 1;
-	if (n > tmp)
-		n = tmp;
-	tmp = ft_strlen(s2) + 1;
-	if (n > tmp)
-		n = tmp;
+  n = ft_min_u64(n, ft_strlen(s1) + 1);
+  n = ft_min_u64(n, ft_strlen(s2) + 1);
 	return (ft_memcmp(s1, s2, n));
 }
