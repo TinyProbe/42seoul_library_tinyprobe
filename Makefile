@@ -51,7 +51,7 @@ SRC				= ft_fput.c				\
 						printf/ft_validation.c	\
 						printf/ft_vali_mix.c		\
 						printf/ft_form.c				\
-						printf/ft_iswhat.c			\
+						printf/ft_iswhat1.c			\
 						printf/ft_iswhat2.c			\
 						printf/ft_setarg.c			\
 						printf/ft_conversion.c	\
