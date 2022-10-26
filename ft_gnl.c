@@ -3,7 +3,7 @@
 static t_buf	*find_buf(t_buf *buf, t_i32 fd);
 static t_i32	fill_buf(t_buf *buf);
 
-t_i8	*get_next_line(t_i32 fd)
+t_i8	*ft_gnl(t_i32 fd)
 {
 	static t_buf	buf[MAX_FILE];
 	t_i8			str[MAX_LEN];

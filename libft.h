@@ -144,6 +144,6 @@ t_i64 ft_fibo(t_i32 idx);
 t_i64 ft_sqrt(t_i64 n);
 t_i32 ft_isprime(t_i64 n);
 t_i32	ft_printf(const t_i8 *format, ...);
-t_i8	*get_next_line(t_i32 fd);
+t_i8	*ft_gnl(t_i32 fd);
 
 #endif
