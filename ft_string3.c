@@ -60,8 +60,7 @@ t_i8	*ft_substr(t_i8 const *s, t_u32 start, size_t len)
 	len_s = ft_strlen(s);
 	if (start >= len_s)
 		return ((t_i8 *) ft_calloc(1, 1));
-	if (len > len_s - start)
-		len = len_s - start;
+	len = ft_min(len, len_s - start);
 	dst = (t_i8 *) malloc(len + 1);
 	if (!dst)
 		return (dst);

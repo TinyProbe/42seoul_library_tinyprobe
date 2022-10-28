@@ -67,11 +67,11 @@ t_i32	ft_isprime(t_i64 n)
 {
 	t_i64	sqrt;
 
-	if (n == 0 || n == 1)
+	if (n < 2)
 		return (0);
 	sqrt = ft_sqrt(n);
 	while (sqrt >= 2)
-		if (n % sqrt-- == 0)
+		if (!(n % sqrt--))
 			return (0);
 	return (1);
 }
