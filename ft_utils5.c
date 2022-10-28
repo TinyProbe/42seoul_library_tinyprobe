@@ -35,3 +35,12 @@ void	ft_swap_u64(t_u64 *a, t_u64 *b)
   *a = b_;
   *b = a_;
 }
+
+void	ft_swap_f64(t_f64 *a, t_f64 *b)
+{
+  const t_f64 a_ = *a;
+  const t_f64 b_ = *b;
+
+  *a = b_;
+  *b = a_;
+}

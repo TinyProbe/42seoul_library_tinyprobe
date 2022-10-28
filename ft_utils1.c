@@ -1,20 +1,20 @@
 #include "libft.h"
 
-t_i64	ft_abs(t_i64 n)
+t_f64	ft_abs(t_f64 n)
 {
 	if (n < 0)
 		return (-n);
 	return (n);
 }
 
-t_i64 ft_max(t_i64 a, t_i64 b)
+t_f64 ft_max(t_f64 a, t_f64 b)
 {
   if (a > b)
     return (a);
   return (b);
 }
 
-t_i64 ft_min(t_i64 a, t_i64 b)
+t_f64 ft_min(t_f64 a, t_f64 b)
 {
   if (a < b)
     return (a);

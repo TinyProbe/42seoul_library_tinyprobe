@@ -30,7 +30,7 @@ void	*ft_memset(void *s, t_i32 c, size_t n)
     n -= sizeof(t_u64);
 	}
 	while (n--)
-		*(t_u8 *) p++ = c;
+		*(t_u8 *) p++ = (t_u8) c;
 	return (s);
 }
 

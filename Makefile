@@ -18,10 +18,6 @@ ARCH			= ar
 ARCHFLAG	= rcs
 SRC				= ft_fput.c				\
 						ft_gnl.c				\
-						ft_issorted1.c	\
-						ft_issorted2.c	\
-						ft_issorted3.c	\
-						ft_issorted4.c	\
 						ft_iswhat1.c		\
 						ft_iswhat2.c		\
 						ft_memory1.c		\
@@ -34,6 +30,8 @@ SRC				= ft_fput.c				\
 						ft_sort6.c			\
 						ft_sort7.c			\
 						ft_sort8.c			\
+						ft_sort9.c			\
+						ft_sort9_1.c		\
 						ft_string1.c		\
 						ft_string2.c		\
 						ft_string3.c		\
@@ -51,7 +49,7 @@ SRC				= ft_fput.c				\
 						printf/ft_validation.c	\
 						printf/ft_vali_mix.c		\
 						printf/ft_form.c				\
-						printf/ft_iswhat1.c			\
+						printf/ft_iswhat.c			\
 						printf/ft_iswhat2.c			\
 						printf/ft_setarg.c			\
 						printf/ft_conversion.c	\

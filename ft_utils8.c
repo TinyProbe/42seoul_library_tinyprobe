@@ -8,7 +8,7 @@ t_i64 ft_fact(t_i64 n)
     return (n * ft_fact(n - 1));
 }
 
-t_i64 ft_pow(t_i64 n, t_i32 indices)
+t_f64 ft_pow(t_f64 n, t_i64 indices)
 {
   if (!indices)
     return (1);
@@ -16,25 +16,30 @@ t_i64 ft_pow(t_i64 n, t_i32 indices)
     return (n * ft_pow(n, indices - 1));
 }
 
-t_i64 ft_fibo(t_i32 idx)
+t_i64 ft_fibo(t_i64 idx)
 {
-  if (idx == 0)
-    return (0);
-  else if (idx == 1)
-    return (1);
-  else
-    return (ft_fibo(idx - 2) + ft_fibo(idx - 1));
+  t_i64 arr[2];
+  t_i64 seq;
+
+  arr[0] = 0;
+  arr[1] = 1;
+  seq = 1;
+  if (idx < 2)
+    return (arr[idx]);
+  while (++seq <= idx)
+    arr[seq & 1] = arr[0] + arr[1];
+  return (arr[!(seq & 1)]);
 }
 
-t_i64 ft_sqrt(t_i64 n)
+t_f64 ft_sqrt(t_f64 n)
 {
-  t_i64 l;
-  t_i64 r;
-  t_i64 med;
+  t_f64 l;
+  t_f64 r;
+  t_f64 med;
 
   l = 0;
   r = ~(1 << 31);
-  while (ft_abs(l - r) != 1)
+  while (1)
   {
     med = (l + r) / 2;
     if (med * med < n)
@@ -44,7 +49,6 @@ t_i64 ft_sqrt(t_i64 n)
     else
       return (med) ;
   }
-  return (l);
 }
 
 t_i32 ft_isprime(t_i64 n)

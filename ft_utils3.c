@@ -23,3 +23,9 @@ void  ft_rev_u64(t_u64 *str, t_i32 begin, t_i32 end)
 	while (begin < --end)
 		ft_swap_u64(str + begin++, str + end);
 }
+
+void  ft_rev_f64(t_f64 *str, t_i32 begin, t_i32 end)
+{
+	while (begin < --end)
+		ft_swap_f64(str + begin++, str + end);
+}
