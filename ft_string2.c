@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_string2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 09:57:16 by tkong             #+#    #+#             */
+/*   Updated: 2022/10/28 10:10:07 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlcpy(t_i8 *dst, const t_i8 *src, size_t size)
@@ -18,9 +30,9 @@ size_t	ft_strlcpy(t_i8 *dst, const t_i8 *src, size_t size)
 
 size_t	ft_strlcat(t_i8 *dst, const t_i8 *src, size_t size)
 {
-	t_u64   p[2];
-	size_t  len[2];
-	size_t  n;
+	t_u64	p[2];
+	size_t	len[2];
+	size_t	n;
 
 	len[0] = ft_strlen(dst);
 	len[1] = ft_strlen(src);
@@ -39,7 +51,7 @@ size_t	ft_strlcat(t_i8 *dst, const t_i8 *src, size_t size)
 
 void	ft_striteri(t_i8 *s, void (*f)(t_u32, t_i8 *))
 {
-	t_i32 i;
+	t_i32	i;
 
 	i = -1;
 	while (s[++i])
@@ -48,8 +60,8 @@ void	ft_striteri(t_i8 *s, void (*f)(t_u32, t_i8 *))
 
 t_i8	*ft_strmapi(t_i8 const *s, t_i8 (*f)(t_u32, t_i8))
 {
-	t_i8		*dst;
-	size_t		n;
+	t_i8	*dst;
+	size_t	n;
 
 	n = ft_strlen(s);
 	dst = (t_i8 *) malloc(n + 1);

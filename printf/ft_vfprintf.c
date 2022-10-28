@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_vfprintf.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 09:59:07 by tkong             #+#    #+#             */
+/*   Updated: 2022/10/28 10:38:26 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 #include "ft_printf.h"
 
 static void			init_info(t_elem *info);
 static const t_i8	*set_arg(const t_i8 *format, va_list ap, t_elem *info);
-static t_i32			cat_arg(t_i8 *buf, t_i32 idx, t_elem *info);
+static t_i32		cat_arg(t_i8 *buf, t_i32 idx, t_elem *info);
 
 t_i32	ft_vfprintf(const t_i8 *format, va_list ap)
 {
 	static t_elem	info;
 	static t_i8		buf[MAX_SIZE];
-	t_i32				idx;
+	t_i32			idx;
 
 	idx = 0;
 	while (*format)

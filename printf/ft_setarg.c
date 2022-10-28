@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_setarg.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 09:59:01 by tkong             #+#    #+#             */
+/*   Updated: 2022/10/28 10:31:07 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 #include "ft_printf.h"
 
@@ -26,8 +38,8 @@ void	set_arg_value(va_list ap, t_elem *info)
 static void	stores(t_elem *info, const t_i8 *s)
 {
 	const t_i8 *const	null = "(null)";
-	t_i32					idx;
-	t_i32					precis;
+	t_i32				idx;
+	t_i32				precis;
 
 	idx = 0;
 	precis = 0;

@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils7.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 09:57:35 by tkong             #+#    #+#             */
+/*   Updated: 2022/10/28 10:22:11 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-#define DIGIT (1 << 0)
-#define SPACE (1 << 1)
+#define DIGIT	1
+#define SPACE	2
 
 static t_i32	iswhat(t_i32 c);
 static t_i32	getsign(const t_i8 **pstr);
@@ -9,15 +21,14 @@ static size_t	dglen(const t_i8 *s);
 
 t_i32	ft_atoi(const t_i8 *str)
 {
-	t_i32			sign;
+	t_i32		sign;
 	size_t		dlen;
-	const t_i8	*max;
+	const t_i8	*max = "9223372036854775808";
 
 	while (*str && (iswhat(*str) & SPACE))
 		++str;
 	sign = getsign(&str);
 	dlen = dglen(str);
-	max = "9223372036854775808";
 	if (sign == 1)
 		max = "9223372036854775807";
 	if (dlen > 19 || (dlen == 19 && ft_strncmp(str, max, dlen) > 0))

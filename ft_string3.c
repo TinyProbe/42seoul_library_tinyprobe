@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_string3.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 09:57:18 by tkong             #+#    #+#             */
+/*   Updated: 2022/10/28 10:27:03 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 #define CODE_SIZE	256
@@ -5,7 +17,7 @@
 t_i8	*ft_strdup(const t_i8 *s1)
 {
 	size_t	size;
-	void    *res;
+	void	*res;
 
 	size = ft_strlen(s1) + 1;
 	res = malloc(size);
@@ -66,7 +78,7 @@ t_i8	*ft_strtrim(t_i8 const *s1, t_i8 const *set)
 
 	ft_bzero((void *) code, CODE_SIZE);
 	while (*set)
-		code[(t_i32) *set++] = 1;
+		code[(t_i32) *(set++)] = 1;
 	begin = -1;
 	while (s1[++begin])
 		if (!code[(t_i32) s1[begin]])
@@ -75,7 +87,7 @@ t_i8	*ft_strtrim(t_i8 const *s1, t_i8 const *set)
 	while (end--)
 		if (!code[(t_i32) s1[end]])
 			break ;
-  if (begin > end)
+	if (begin > end)
 		return ((t_i8 *) ft_calloc(1, 1));
 	return (ft_substr(s1, begin, (end + 1) - begin));
 }

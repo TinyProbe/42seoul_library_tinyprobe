@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_string4.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 09:57:20 by tkong             #+#    #+#             */
+/*   Updated: 2022/10/28 10:11:20 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static t_i8		*trim(const t_i8 *s, t_i8 c);
@@ -24,7 +36,7 @@ static t_i8	*trim(const t_i8 *s, t_i8 c)
 {
 	t_i8	*dst;
 	t_i8	set[2];
-	t_i32		i[2];
+	t_i32	i[2];
 
 	*(t_u16 *) set = (t_u16) c;
 	dst = ft_strtrim(s, set);
@@ -49,7 +61,7 @@ static size_t	split(const t_i8 *trimmed, t_i8 **buf, t_i8 c)
 {
 	t_u64	p1;
 	t_u64	p2;
-	size_t		num;
+	size_t	num;
 
 	p1 = (t_u64) trimmed;
 	p2 = (t_u64) ft_memchr((t_i8 *) p1, c, ft_strlen((t_i8 *) p1));

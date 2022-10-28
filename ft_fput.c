@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fput.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 09:52:30 by tkong             #+#    #+#             */
+/*   Updated: 2022/10/28 09:54:03 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_putchar_fd(t_i8 c, t_i32 fd)
@@ -18,11 +30,11 @@ void	ft_putstr_fd(t_i8 *s, t_i32 fd)
 
 void	ft_putnbr_fd(t_i32 n, t_i32 fd)
 {
-  t_i8  *num;
+	t_i8	*num;
 
-  num = ft_itoa(n);
-  if (!num)
-    return ;
-  ft_putstr_fd(num, fd);
-  free(num);
+	num = ft_itoa(n);
+	if (!num)
+		return ;
+	ft_putstr_fd(num, fd);
+	free(num);
 }
