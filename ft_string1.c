@@ -36,8 +36,8 @@ t_i8	*ft_strrchr(const t_i8 *s, t_i32 c)
 	p = (t_u64) s + n;
 	while (n--)
 		if (*(t_u8 *)--p == (t_u8) c)
-			return ((void *) p);
-	return ((void *) 0);
+			return ((t_i8 *) p);
+	return ((t_i8 *) 0);
 }
 
 t_i8	*ft_strnstr(const t_i8 *big, const t_i8 *little, size_t len)
