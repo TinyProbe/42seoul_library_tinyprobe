@@ -19,7 +19,7 @@ t_i32	ft_isalnum(t_i32 c)
 
 t_i32	ft_isalpha(t_i32 c)
 {
-	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
+	return (ft_islower(c) || ft_isupper(c));
 }
 
 t_i32	ft_isascii(t_i32 c)

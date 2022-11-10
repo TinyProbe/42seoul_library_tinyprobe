@@ -12,47 +12,61 @@
 
 #include "libft.h"
 
-void	ft_swap_u8(t_u8 *a, t_u8 *b)
-{
-	const t_u8	a_ = *a;
-	const t_u8	b_ = *b;
+#define DIGIT	1
+#define SPACE	2
 
-	*a = b_;
-	*b = a_;
+static t_i32	iswhat(t_i32 c);
+static t_i32	getsign(const t_i8 **pstr);
+static size_t	dglen(const t_i8 *s);
+
+t_i32	ft_atoi(const t_i8 *str)
+{
+	t_i32		sign;
+	size_t		dlen;
+	const t_i8	*max = "9223372036854775808";
+
+	while (*str && (iswhat(*str) & SPACE))
+		++str;
+	sign = getsign(&str);
+	dlen = dglen(str);
+	if (sign == 1)
+		max = "9223372036854775807";
+	if (dlen > 19 || (dlen == 19 && ft_strncmp(str, max, dlen) > 0))
+		return (~(sign >> 1));
+	return (ft_stoi(str) * sign);
 }
 
-void	ft_swap_u16(t_u16 *a, t_u16 *b)
+static t_i32	iswhat(t_i32 c)
 {
-	const t_u16	a_ = *a;
-	const t_u16	b_ = *b;
+	t_u8	c1;
 
-	*a = b_;
-	*b = a_;
+	c1 = c;
+	c = 0;
+	if (ft_isdigit(c1))
+		c += DIGIT;
+	if (ft_isspace(c1))
+		c += SPACE;
+	return (c);
 }
 
-void	ft_swap_u32(t_u32 *a, t_u32 *b)
+static t_i32	getsign(const t_i8 **pstr)
 {
-	const t_u32	a_ = *a;
-	const t_u32	b_ = *b;
-
-	*a = b_;
-	*b = a_;
+	if (**pstr == '-')
+	{
+		++(*pstr);
+		return (-1);
+	}
+	else if (**pstr == '+')
+		++(*pstr);
+	return (1);
 }
 
-void	ft_swap_u64(t_u64 *a, t_u64 *b)
+static size_t	dglen(const t_i8 *s)
 {
-	const t_u64	a_ = *a;
-	const t_u64	b_ = *b;
+	size_t	len;
 
-	*a = b_;
-	*b = a_;
-}
-
-void	ft_swap_f64(t_f64 *a, t_f64 *b)
-{
-	const t_f64	a_ = *a;
-	const t_f64	b_ = *b;
-
-	*a = b_;
-	*b = a_;
+	len = 0;
+	while (s[len] && (iswhat(s[len]) & DIGIT))
+		++len;
+	return (len);
 }

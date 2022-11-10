@@ -12,47 +12,59 @@
 
 #include "libft.h"
 
-void	ft_swap_i8(t_i8 *a, t_i8 *b)
+t_i32	ft_tolower(t_i32 c)
 {
-	const t_i8	a_ = *a;
-	const t_i8	b_ = *b;
-
-	*a = b_;
-	*b = a_;
+	if (c == -1 || c >= 256)
+		return (c);
+	if (c >= 'A' && c <= 'Z')
+		return (c + ('a' - 'A'));
+	return (c);
 }
 
-void	ft_swap_i16(t_i16 *a, t_i16 *b)
+t_i32	ft_toupper(t_i32 c)
 {
-	const t_i16	a_ = *a;
-	const t_i16	b_ = *b;
-
-	*a = b_;
-	*b = a_;
+	if (c == -1 || c >= 256)
+		return (c);
+	if (c >= 'a' && c <= 'z')
+		return (c - ('a' - 'A'));
+	return (c);
 }
 
-void	ft_swap_i32(t_i32 *a, t_i32 *b)
+t_i32	ft_stoi(const t_i8 *str)
 {
-	const t_i32	a_ = *a;
-	const t_i32	b_ = *b;
+	t_i32	sign;
+	t_i64	res;
 
-	*a = b_;
-	*b = a_;
+	sign = 1;
+	res = 0;
+	if (*str == '-' || *str == '+')
+		if (*str++ == '-')
+			sign = -1;
+	while (ft_isdigit(*str))
+		res = (res * 10) + (*str++ - '0');
+	return (res * sign);
 }
 
-void	ft_swap_i64(t_i64 *a, t_i64 *b)
+t_i8	*ft_itoa(t_i32 n)
 {
-	const t_i64	a_ = *a;
-	const t_i64	b_ = *b;
+	t_i8	buf[20];
+	t_i8	*dst;
+	t_i32	i;
 
-	*a = b_;
-	*b = a_;
-}
-
-void	ft_swap_f32(t_f32 *a, t_f32 *b)
-{
-	const t_f32	a_ = *a;
-	const t_f32	b_ = *b;
-
-	*a = b_;
-	*b = a_;
+	if (!n)
+		return ((t_i8 *) ft_memcpy(malloc(2), "0", 2));
+	i = 0;
+	if (n < 0)
+		buf[i++] = '-';
+	while (n)
+	{
+		buf[i++] = ft_abs(n % 10) + '0';
+		n /= 10;
+	}
+	buf[i] = '\0';
+	ft_reverse(buf, buf[0] == '-', i, sizeof(t_i8));
+	dst = (t_i8 *) malloc(i + 1);
+	if (!dst)
+		return (dst);
+	return ((t_i8 *) ft_memcpy(dst, buf, i + 1));
 }

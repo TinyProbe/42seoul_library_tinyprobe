@@ -12,32 +12,66 @@
 
 #include "libft.h"
 
-void	ft_rev_i8(t_i8 *str, t_i32 begin, t_i32 end)
+t_u64	ft_fact(t_u64 n)
 {
-	while (begin < --end)
-		ft_swap_i8(str + begin++, str + end);
+	if (!n)
+		return (1);
+	else
+		return (n * ft_fact(n - 1));
 }
 
-void	ft_rev_i16(t_i16 *str, t_i32 begin, t_i32 end)
+t_f64	ft_pow(t_f64 n, t_u64 indices)
 {
-	while (begin < --end)
-		ft_swap_i16(str + begin++, str + end);
+	if (!indices)
+		return (1);
+	else
+		return (n * ft_pow(n, indices - 1));
 }
 
-void	ft_rev_i32(t_i32 *str, t_i32 begin, t_i32 end)
+t_u64	ft_fibo(t_u64 idx)
 {
-	while (begin < --end)
-		ft_swap_i32(str + begin++, str + end);
+	t_u64	arr[2];
+	t_u64	seq;
+
+	arr[0] = 0;
+	arr[1] = 1;
+	seq = 1;
+	if (idx < 2)
+		return (arr[idx]);
+	while (++seq <= idx)
+		arr[seq & 1] = arr[0] + arr[1];
+	return (arr[!(seq & 1)]);
 }
 
-void	ft_rev_i64(t_i64 *str, t_i32 begin, t_i32 end)
+t_f64	ft_sqrt(t_f64 n)
 {
-	while (begin < --end)
-		ft_swap_i64(str + begin++, str + end);
+	t_f64	l;
+	t_f64	r;
+	t_f64	med;
+
+	l = 0;
+	r = ~(1 << 31);
+	while (1)
+	{
+		med = (l + r) / 2;
+		if (med * med < n)
+			l = med;
+		else if (med * med > n)
+			r = med;
+		else
+			return (med);
+	}
 }
 
-void	ft_rev_f32(t_f32 *str, t_i32 begin, t_i32 end)
+t_i32	ft_isprime(t_u64 n)
 {
-	while (begin < --end)
-		ft_swap_f32(str + begin++, str + end);
+	t_u64	sqrt;
+
+	if (n < 2)
+		return (0);
+	sqrt = ft_sqrt(n);
+	while (sqrt >= 2)
+		if (!(n % sqrt--))
+			return (0);
+	return (1);
 }

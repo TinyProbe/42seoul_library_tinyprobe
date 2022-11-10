@@ -33,19 +33,19 @@ t_f64	ft_min(t_f64 a, t_f64 b)
 	return (b);
 }
 
-t_i64	ft_gcd(t_i64 a, t_i64 b)
+t_u64	ft_gcd(t_u64 a, t_u64 b)
 {
 	if (a < b)
-		ft_swap_i64(&a, &b);
+		ft_swap(&a, &b, sizeof(t_u64));
 	while (b)
 	{
 		a %= b;
-		ft_swap_i64(&a, &b);
+		ft_swap(&a, &b, sizeof(t_u64));
 	}
 	return (a);
 }
 
-t_i64	ft_lcm(t_i64 a, t_i64 b)
+t_u64	ft_lcm(t_u64 a, t_u64 b)
 {
 	return (a * b / ft_gcd(a, b));
 }

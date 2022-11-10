@@ -12,32 +12,56 @@
 
 #include "libft.h"
 
-void	ft_rev_u8(t_u8 *str, t_i32 begin, t_i32 end)
+static void	ft_swap_half(void *a, void *b, size_t siz);
+
+void	ft_swap(void *a, void *b, size_t siz)
 {
-	while (begin < --end)
-		ft_swap_u8(str + begin++, str + end);
+	if (a == b)
+		return ;
+	if (siz == sizeof(t_u8))
+	{
+		*(t_u8 *) a ^= *(t_u8 *) b;
+		*(t_u8 *) b ^= *(t_u8 *) a;
+		*(t_u8 *) a ^= *(t_u8 *) b;
+	}
+	else if (siz == sizeof(t_u16))
+	{
+		*(t_u16 *) a ^= *(t_u16 *) b;
+		*(t_u16 *) b ^= *(t_u16 *) a;
+		*(t_u16 *) a ^= *(t_u16 *) b;
+	}
+	else
+		ft_swap_half(a, b, siz);
 }
 
-void	ft_rev_u16(t_u16 *str, t_i32 begin, t_i32 end)
+static void	ft_swap_half(void *a, void *b, size_t siz)
 {
-	while (begin < --end)
-		ft_swap_u16(str + begin++, str + end);
+	if (siz == sizeof(t_u32))
+	{
+		*(t_u32 *) a ^= *(t_u32 *) b;
+		*(t_u32 *) b ^= *(t_u32 *) a;
+		*(t_u32 *) a ^= *(t_u32 *) b;
+	}
+	else if (siz == sizeof(t_u64))
+	{
+		*(t_u64 *) a ^= *(t_u64 *) b;
+		*(t_u64 *) b ^= *(t_u64 *) a;
+		*(t_u64 *) a ^= *(t_u64 *) b;
+	}
 }
 
-void	ft_rev_u32(t_u32 *str, t_i32 begin, t_i32 end)
+void	ft_reverse(void *arr, t_i32 begin, t_i32 end, size_t siz)
 {
-	while (begin < --end)
-		ft_swap_u32(str + begin++, str + end);
-}
-
-void	ft_rev_u64(t_u64 *str, t_i32 begin, t_i32 end)
-{
-	while (begin < --end)
-		ft_swap_u64(str + begin++, str + end);
-}
-
-void	ft_rev_f64(t_f64 *str, t_i32 begin, t_i32 end)
-{
-	while (begin < --end)
-		ft_swap_f64(str + begin++, str + end);
+	if (siz == sizeof(t_u8))
+		while (begin < --end)
+			ft_swap((t_u8 *) arr + begin++, (t_u8 *) arr + end, siz);
+	else if (siz == sizeof(t_u16))
+		while (begin < --end)
+			ft_swap((t_u16 *) arr + begin++, (t_u16 *) arr + end, siz);
+	else if (siz == sizeof(t_u32))
+		while (begin < --end)
+			ft_swap((t_u32 *) arr + begin++, (t_u32 *) arr + end, siz);
+	else if (siz == sizeof(t_u64))
+		while (begin < --end)
+			ft_swap((t_u64 *) arr + begin++, (t_u64 *) arr + end, siz);
 }

@@ -41,9 +41,6 @@ SRC			= ft_fput.c			\
 			  ft_utils3.c		\
 			  ft_utils4.c		\
 			  ft_utils5.c		\
-			  ft_utils6.c		\
-			  ft_utils7.c		\
-			  ft_utils8.c		\
 			  printf/ft_printf.c		\
 			  printf/ft_vfprintf.c		\
 			  printf/ft_validation.c	\
