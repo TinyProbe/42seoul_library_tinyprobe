@@ -62,7 +62,7 @@ t_f64	ft_sqrt(t_f64 n)
 			l = med;
 		else if (med * med > n)
 			r = med;
-    prev = med;
+		prev = med;
 	}
 }
 
