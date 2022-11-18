@@ -48,18 +48,21 @@ t_f64	ft_sqrt(t_f64 n)
 	t_f64	l;
 	t_f64	r;
 	t_f64	med;
+	t_f64	prev;
 
 	l = 0;
-	r = ~(1 << 31);
+	r = 2ull << 32;
+	prev = 0;
 	while (1)
 	{
 		med = (l + r) / 2;
-		if (med * med < n)
+		if (prev == med)
+			return (med);
+		else if (med * med < n)
 			l = med;
 		else if (med * med > n)
 			r = med;
-		else
-			return (med);
+    prev = med;
 	}
 }
 
@@ -71,7 +74,7 @@ t_i32	ft_isprime(t_u64 n)
 		return (0);
 	sqrt = ft_sqrt(n);
 	while (sqrt >= 2)
-		if (!(n % sqrt--))
+		if (n % sqrt-- == 0)
 			return (0);
 	return (1);
 }
