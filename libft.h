@@ -22,10 +22,12 @@ typedef char				t_i8;
 typedef short				t_i16;
 typedef int					t_i32;
 typedef long long			t_i64;
+typedef long int			t_isize;
 typedef unsigned char		t_u8;
 typedef unsigned short		t_u16;
 typedef unsigned int		t_u32;
 typedef unsigned long long	t_u64;
+typedef unsigned long int	t_usize;
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
