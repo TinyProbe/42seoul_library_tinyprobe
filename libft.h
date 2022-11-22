@@ -28,6 +28,11 @@ typedef unsigned short		t_u16;
 typedef unsigned int		t_u32;
 typedef unsigned long long	t_u64;
 typedef unsigned long int	t_usize;
+typedef char				t_bool;
+
+# define TRUE	1
+# define FALSE	0
+# define EQUAL	0
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
@@ -53,14 +58,14 @@ void	ft_putchar_fd(t_i8 c, t_i32 fd);
 void	ft_putendl_fd(t_i8 *s, t_i32 fd);
 void	ft_putstr_fd(t_i8 *s, t_i32 fd);
 void	ft_putnbr_fd(t_i32 n, t_i32 fd);
-t_i32	ft_isalnum(t_i32 c);
-t_i32	ft_isalpha(t_i32 c);
-t_i32	ft_isascii(t_i32 c);
-t_i32	ft_isdigit(t_i32 c);
-t_i32	ft_isprint(t_i32 c);
-t_i32	ft_isspace(t_i32 c);
-t_i32	ft_islower(t_i32 c);
-t_i32	ft_isupper(t_i32 c);
+t_bool	ft_isalnum(t_i32 c);
+t_bool	ft_isalpha(t_i32 c);
+t_bool	ft_isascii(t_i32 c);
+t_bool	ft_isdigit(t_i32 c);
+t_bool	ft_isprint(t_i32 c);
+t_bool	ft_isspace(t_i32 c);
+t_bool	ft_islower(t_i32 c);
+t_bool	ft_isupper(t_i32 c);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
@@ -81,6 +86,7 @@ size_t	ft_strlen(const t_i8 *s);
 t_i8	*ft_strchr(const t_i8 *s, t_i32 c);
 t_i8	*ft_strrchr(const t_i8 *s, t_i32 c);
 t_i8	*ft_strnstr(const t_i8 *big, const t_i8 *little, size_t len);
+t_i32	ft_strcmp(const t_i8 *s1, const t_i8 *s2);
 t_i32	ft_strncmp(const t_i8 *s1, const t_i8 *s2, size_t n);
 size_t	ft_strlcpy(t_i8 *dst, const t_i8 *src, size_t size);
 size_t	ft_strlcat(t_i8 *dst, const t_i8 *src, size_t size);
@@ -89,8 +95,8 @@ t_i8	*ft_strmapi(t_i8 const *s, t_i8 (*f)(t_u32, t_i8));
 t_i8	*ft_strdup(const t_i8 *s1);
 t_i8	*ft_strndup(const t_i8 *s1, size_t n);
 t_i8	*ft_strjoin(t_i8 const *s1, t_i8 const *s2);
-t_i8	*ft_substr(t_i8 const *s, t_u32 start, size_t len);
 t_i8	*ft_strtrim(t_i8 const *s1, t_i8 const *set);
+t_i8	*ft_substr(t_i8 const *s, t_u32 start, size_t len);
 t_i8	**ft_split(t_i8 const *s, t_i8 c);
 void	ft_sort_i8(t_i8 *arr, t_i32 begin, t_i32 end);
 void	ft_sort_i16(t_i16 *arr, t_i32 begin, t_i32 end);

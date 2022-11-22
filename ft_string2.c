@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+t_i32	ft_strncmp(const t_i8 *s1, const t_i8 *s2, size_t n)
+{
+	n = ft_min(n, ft_strlen(s1));
+	n = ft_min(n, ft_strlen(s2));
+	return (ft_memcmp(s1, s2, n));
+}
+
 size_t	ft_strlcpy(t_i8 *dst, const t_i8 *src, size_t size)
 {
 	size_t	len;
