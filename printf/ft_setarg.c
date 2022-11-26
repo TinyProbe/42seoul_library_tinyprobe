@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include "ft_printf.h"
 
 static void	stores(t_elem *info, const t_i8 *s);

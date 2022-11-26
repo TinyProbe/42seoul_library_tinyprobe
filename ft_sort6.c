@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft.h"
 
 static void		unit_merge_sort(t_u16 **buf, t_i32 seq, size_t len);
 static t_i32	replace_buf(t_u16 **buf, t_i32 seq, size_t len, t_i32 *i);

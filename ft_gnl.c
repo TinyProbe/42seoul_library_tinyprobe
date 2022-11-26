@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft.h"
 
 static t_buf	*find_buf(t_buf *buf, t_i32 fd);
 static t_i32	fill_buf(t_buf *buf);

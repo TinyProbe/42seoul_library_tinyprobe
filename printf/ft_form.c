@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include "ft_printf.h"
 
 t_i32	scan_flag(const t_i8 *form, t_i32 idx, t_elem *info)

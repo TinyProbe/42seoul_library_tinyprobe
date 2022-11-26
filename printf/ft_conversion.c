@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include "ft_printf.h"
 
 void	itodec(t_elem *info, t_i32 i)

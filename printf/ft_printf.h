@@ -13,6 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include "../ft.h"
 # include <stdarg.h>
 
 # define MAX_SIZE		1000000000

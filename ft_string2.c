@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft.h"
 
 t_i32	ft_strncmp(const t_i8 *s1, const t_i8 *s2, size_t n)
 {

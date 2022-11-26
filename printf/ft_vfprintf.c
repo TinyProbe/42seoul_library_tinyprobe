@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include "ft_printf.h"
 
 static void			init_info(t_elem *info);

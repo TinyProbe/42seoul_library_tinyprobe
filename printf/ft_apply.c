@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include "ft_printf.h"
 
 void	apply_prec(t_elem *info)

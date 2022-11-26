@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft.h"
 
 static t_i8		*trim(const t_i8 *s, t_i8 c);
 static size_t	split(const t_i8 *trimmed, t_i8 **buf, t_i8 c);

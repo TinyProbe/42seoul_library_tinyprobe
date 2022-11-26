@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new_)
 {
 	if (*lst)
-		ft_lstlast(*lst)->next = new;
+		ft_lstlast(*lst)->next = new_;
 	else
-		*lst = new;
+		*lst = new_;
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new_)
 {
-	new->next = *lst;
-	*lst = new;
+	new_->next = *lst;
+	*lst = new_;
 }
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
