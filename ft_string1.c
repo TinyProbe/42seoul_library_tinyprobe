@@ -64,10 +64,9 @@ t_i8	*ft_strnstr(const t_i8 *big, const t_i8 *little, size_t len)
 
 t_i32	ft_strcmp(const t_i8 *s1, const t_i8 *s2)
 {
-	while (*s1 && *s2 && *s1 == *s2)
-	{
-		++s1;
-		++s2;
-	}
-	return (*s1 - *s2);
+	size_t	n;
+
+	n = ft_strlen(s1);
+	n = ft_min(n, ft_strlen(s2));
+	return (ft_memcmp(s1, s2, n));
 }
