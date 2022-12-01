@@ -19,17 +19,15 @@ t_i8	**ft_split(t_i8 const *s, t_i8 c)
 {
 	t_i8	*trimmed;
 	t_i8	*buf[100000];
-	t_i8	**strs;
 	size_t	num;
 
 	trimmed = trim(s, c);
 	if (!trimmed)
 		return ((t_i8 **) 0);
 	num = split(trimmed, buf, c);
-	strs = (t_i8 **) malloc(sizeof(t_i8 *) * (num + 1));
-	ft_memcpy(strs, buf, sizeof(t_i8 *) * (num + 1));
 	free(trimmed);
-	return (strs);
+	return (ft_memcpy((t_i8 **) malloc(sizeof(t_i8 *) * (num + 1)), buf,
+			sizeof(t_i8 *) * (num + 1)));
 }
 
 static t_i8	*trim(const t_i8 *s, t_i8 c)
@@ -47,11 +45,11 @@ static t_i8	*trim(const t_i8 *s, t_i8 c)
 	{
 		if (dst[i[0]] == c && dst[i[0] - 1] == c)
 			while (dst[i[0]] == c)
-				i[0] += 1;
+				++i[0];
 		if (i[0] ^ i[1])
 			dst[i[1]] = dst[i[0]];
-		i[0] += 1;
-		i[1] += 1;
+		++i[0];
+		++i[1];
 	}
 	dst[i[1]] = '\0';
 	return (dst);
