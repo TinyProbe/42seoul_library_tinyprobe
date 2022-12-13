@@ -28,7 +28,7 @@ typedef unsigned short		t_u16;
 typedef unsigned int		t_u32;
 typedef unsigned long long	t_u64;
 typedef unsigned long int	t_usize;
-typedef char				t_bool;
+typedef int					t_bool;
 
 # define TRUE	1
 # define FALSE	0
@@ -37,8 +37,9 @@ typedef char				t_bool;
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
+
 # define MAX_FILE 10000
-# define MAX_LEN 500000
+# define MAX_LEN 1000000
 
 typedef struct s_buf
 {
