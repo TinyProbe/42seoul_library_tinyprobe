@@ -28,11 +28,10 @@ typedef unsigned short		t_u16;
 typedef unsigned int		t_u32;
 typedef unsigned long long	t_u64;
 typedef unsigned long int	t_usize;
-typedef int					t_bool;
+typedef char				t_bool;
 
 # define TRUE	1
 # define FALSE	0
-# define EQUAL	0
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
