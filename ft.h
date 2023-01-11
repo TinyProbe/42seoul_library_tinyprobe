@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:39:05 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/08 13:00:41 by tkong            ###   ########.fr       */
+/*   Updated: 2023/01/11 18:11:04 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_i8	*ft_strrchr(const t_i8 *s, t_i32 c);
 t_i8	*ft_strnstr(const t_i8 *big, const t_i8 *little, size_t len);
 t_i32	ft_strcmp(const t_i8 *s1, const t_i8 *s2);
 t_i32	ft_strncmp(const t_i8 *s1, const t_i8 *s2, size_t n);
+size_t	ft_strcpy(t_i8 *dst, const t_i8 *src);
 size_t	ft_strlcpy(t_i8 *dst, const t_i8 *src, size_t size);
 size_t	ft_strlcat(t_i8 *dst, const t_i8 *src, size_t size);
 void	ft_striteri(t_i8 *s, void (*f)(t_u32, t_i8 *));
