@@ -24,8 +24,6 @@ void	ft_sort_u32(t_u32 *arr, t_i32 begin, t_i32 end)
 	len = end - begin;
 	buf[0] = (t_u32 *) malloc(sizeof(t_u32) * len);
 	buf[1] = (t_u32 *) malloc(sizeof(t_u32) * len);
-	if (!buf[0] || !buf[1])
-		return ;
 	ft_memcpy(buf[0], arr + begin, sizeof(t_u32) * len);
 	seq = 0;
 	while ((1 << seq) < (t_i32) len)
