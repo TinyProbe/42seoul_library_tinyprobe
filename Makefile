@@ -6,13 +6,13 @@
 #    By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 12:24:20 by tkong             #+#    #+#              #
-#    Updated: 2023/02/06 00:00:16 by tkong            ###   ########.fr        #
+#    Updated: 2023/03/13 12:33:13 by tkong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 CC		= cc
-CFLAG	= -Wall -Wextra -Werror -c
+CFLAG	= -Wall -Wextra -Werror -O2 -c
 AR		= ar
 ARFLAG	= rcs
 SRC		= ft_fput.c\
