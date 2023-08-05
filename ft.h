@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:39:05 by tkong             #+#    #+#             */
-/*   Updated: 2023/04/25 17:56:44 by tkong            ###   ########.fr       */
+/*   Updated: 2023/08/05 18:03:15 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef unsigned short		t_u16;
 typedef unsigned int		t_u32;
 typedef unsigned long long	t_u64;
 typedef unsigned long int	t_usize;
-typedef char				t_bool;
+typedef unsigned char		t_bool;
 
 # define TRUE		1
 # define FALSE		0

@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:57:14 by tkong             #+#    #+#             */
-/*   Updated: 2023/03/13 21:24:55 by tkong            ###   ########.fr       */
+/*   Updated: 2023/08/05 18:13:53 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ size_t	ft_strlen(const t_i8 *s)
 
 	p = s;
 	pl = (const t_u64 *) p-- - 1;
-	while (((t_u64)++p & (sizeof(t_u64) - 1)) != 0)
-		if (*p == '\0')
+	while ((t_u64)++p & (sizeof(t_u64) - 1))
+		if (!*p)
 			return (p - s);
 	while (++pl)
 	{

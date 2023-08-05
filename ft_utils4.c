@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:57:29 by tkong             #+#    #+#             */
-/*   Updated: 2023/03/19 13:08:25 by tkong            ###   ########.fr       */
+/*   Updated: 2023/08/05 18:34:29 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ t_i32	ft_stoi(const t_i8 *str)
 	t_i64	res;
 
 	sign = 1;
-	if ((*str == '-' || *str == '+') && *str++ == '-')
-		sign = -1;
+	if (*str == '-' || *str == '+')
+		sign = -(*str++ - ',');
 	res = 0;
 	while (ft_isdigit(*str))
-		res = (res * 10) + (*str++ - '0');
+		res = (res << 1) + (res << 3) + (*str++ ^ 48);
 	return (res * sign);
 }
 
@@ -51,8 +51,8 @@ t_f32	ft_stof(const t_i8 *str)
 	t_f32	res;
 
 	sign = 1;
-	if ((*str == '-' || *str == '+') && *str++ == '-')
-		sign = -1;
+	if (*str == '-' || *str == '+')
+		sign = -(*str++ - ',');
 	strs = ft_split(str, '.');
 	res = ft_stoi(strs[0]);
 	if (strs[1])
@@ -63,24 +63,23 @@ t_f32	ft_stof(const t_i8 *str)
 
 t_i8	*ft_itoa(t_i32 n)
 {
-	t_i8	buf[20];
-	t_i8	*dst;
+	t_i8	buf[128];
 	t_i32	i;
+	t_i32	sign;
 
-	if (!n)
-		return ((t_i8 *) ft_memcpy(malloc(2), "0", 2));
-	i = 0;
+	buf[127] = '\0';
+	i = 127;
+	sign = 1;
+	if (n == 0)
+		return ((t_i8 *)ft_memcpy(malloc(2), "0", 2));
 	if (n < 0)
-		buf[i++] = '-';
+		sign = -1;
 	while (n)
 	{
-		buf[i++] = ft_abs(n % 10) + '0';
+		buf[--i] = ft_abs(n % 10) + '0';
 		n /= 10;
 	}
-	buf[i] = '\0';
-	ft_reverse(buf + (buf[0] == '-'), buf + i, sizeof(t_i8));
-	dst = (t_i8 *) malloc(i + 1);
-	if (!dst)
-		return (dst);
-	return ((t_i8 *) ft_memcpy(dst, buf, i + 1));
+	if (sign == -1)
+		buf[--i] = '-';
+	return ((t_i8 *)ft_memcpy(malloc(128 - i), buf, 128 - i));
 }

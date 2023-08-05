@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:57:27 by tkong             #+#    #+#             */
-/*   Updated: 2023/04/25 17:55:51 by tkong            ###   ########.fr       */
+/*   Updated: 2023/08/05 18:18:58 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_reverse(void *begin, void *end, size_t siz)
 
 t_bool	*ft_make_code(const char *set)
 {
-	static char	code[CODE_SIZE];
+	static t_bool	code[CODE_SIZE];
 
 	ft_bzero(code, CODE_SIZE);
 	while (*set)

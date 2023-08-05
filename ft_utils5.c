@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:57:31 by tkong             #+#    #+#             */
-/*   Updated: 2022/10/28 10:13:10 by tkong            ###   ########.fr       */
+/*   Updated: 2023/08/05 18:36:44 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static t_i32	iswhat(t_i32 c);
 static t_i32	getsign(const t_i8 **pstr);
-static size_t	dglen(const t_i8 *s);
+static size_t	digitlen(const t_i8 *s);
 
 t_i32	ft_atoi(const t_i8 *str)
 {
@@ -28,7 +28,7 @@ t_i32	ft_atoi(const t_i8 *str)
 	while (*str && (iswhat(*str) & SPACE))
 		++str;
 	sign = getsign(&str);
-	dlen = dglen(str);
+	dlen = digitlen(str);
 	if (sign == 1)
 		max = "9223372036854775807";
 	if (dlen > 19 || (dlen == 19 && ft_strncmp(str, max, dlen) > 0))
@@ -61,7 +61,7 @@ static t_i32	getsign(const t_i8 **pstr)
 	return (1);
 }
 
-static size_t	dglen(const t_i8 *s)
+static size_t	digitlen(const t_i8 *s)
 {
 	size_t	len;
 

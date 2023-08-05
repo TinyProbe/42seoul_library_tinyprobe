@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:56:40 by tkong             #+#    #+#             */
-/*   Updated: 2022/10/28 10:20:02 by tkong            ###   ########.fr       */
+/*   Updated: 2023/08/05 18:09:14 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
+	ft_memset(s, '\0', n);
 }
 
 void	*ft_calloc(size_t count, size_t size)
